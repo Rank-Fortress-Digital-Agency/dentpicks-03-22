@@ -1,336 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      /* Global Styles */
 
-/* Global Styles */
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      body {
+        padding: 40px 10%;
+        background: #f5f5f5;
+      }
 
-body {
-  padding: 40px 10%;
-  background: #f5f5f5;
-}
+      a {
+        text-decoration: none;
+      }
 
-a{
-  text-decoration: none;
-}
+      /* Container Styles */
+      .container {
+        display: flex;
+      }
+      .main-wrapper {
+        flex: 2;
+      }
+      .side-bar {
+        background: #faf9f9;
+        flex: 1;
+        padding: 40px;
+        /* background-color: white; */
+      }
 
-/* Container Styles */
-.container {
-  display: flex;
-}
-.main-wrapper{
-  flex: 2;
-}
-.side-bar{
-  background: #faf9f9;
-  flex: 1;
-  padding: 40px;
-  /* background-color: white; */
-}
+      .side-bar ul {
+        padding: 0 40px;
+        list-style: none;
+      }
 
-.side-bar ul{
-  padding: 0 40px;
-  list-style: none;
-}
+      .side-bar {
+        background: rgb(230, 230, 231);
+      }
 
-.side-bar{
-  background: rgb(230, 230, 231);
-}
+      @media only screen and (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+        .side-bar {
+          background: #2650a3;
+          color: white !important;
+        }
+        .side-bar a {
+          color: white !important;
+        }
+      }
 
+      /* Navigation Menu Styles */
 
-@media only screen and (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .side-bar{
-    background: #2650a3;
-    color: white !important;
-  }
-  .side-bar a{
-    color: white !important;
-  }
-}
+      nav.nav-menu {
+        width: 100%;
+        background-color: #2650a3;
+        padding: 10px;
+      }
 
+      nav.nav-menu ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size: clamp(0.8rem, 1.2vw, 2rem);
+      }
 
+      .nav-menu .nav-item {
+        padding: 15px;
+        transition: background-color 500ms ease-in-out;
+      }
 
-/* Navigation Menu Styles */
+      .nav-menu .nav-item:hover {
+        cursor: pointer;
+        background-color: #f5f5f54d;
+      }
 
-nav.nav-menu {
-  width: 100%;
-  background-color: #2650a3;
-  padding: 10px;
-}
+      .nav-menu .nav-item a {
+        text-decoration: none;
+        color: white;
+      }
 
-nav.nav-menu ul {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  font-size: clamp(.8rem, 1.2vw, 2rem); 
-}
+      /* Main Content Wrapper Styles */
+      .main-wrapper {
+        background: white;
+        padding: 40px;
+      }
 
-.nav-menu .nav-item {
-  padding: 15px;
-  transition: background-color 500ms ease-in-out;
-}
+      section {
+        margin-bottom: 60px;
+      }
 
-.nav-menu .nav-item:hover {
-  cursor: pointer;
-  background-color: #f5f5f54d;
-}
+      section.head,
+      section.youtube-embed {
+        text-align: center;
+      }
 
-.nav-menu .nav-item a{
-  text-decoration: none;
-  color: white;
-}
+      .button-link {
+        display: block;
+        margin: 20px 0 0 0;
+        padding: 10px 40px;
+        width: fit-content;
+        background: #2650a3;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s transform ease-in-out;
+      }
 
+      .button-link:hover {
+        transform: scale(1.05);
+      }
 
-/* Main Content Wrapper Styles */
-.main-wrapper {
-  background: white;
-  padding: 40px;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-section {
-  margin-bottom: 60px;
-}
+      h2 {
+        margin-bottom: 20px;
+      }
 
-section.head,
-section.youtube-embed {
-  text-align: center;
-}
+      p {
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5rem;
+      }
 
-.button-link {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 10px 40px;
-  width: fit-content;
-  background: #2650a3;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s transform ease-in-out;
-}
+      img {
+        max-width: 100%;
+      }
 
-.button-link:hover {
-  transform: scale(1.05);
-}
+      .two-col {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-h1 {
-  font-size: 34px;
-}
+      .two-col div {
+        width: 50%;
+      }
 
-h2 {
-  margin-bottom: 20px;
-}
+      @media only screen and (max-width: 900px) {
+        body {
+          padding: 0;
+        }
 
-p {
-  text-align: justify;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-}
+        .two-col {
+          flex-direction: column;
+        }
 
-img {
-  max-width: 100%;
-}
+        .two-col div {
+          width: 100%;
+        }
 
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
+        .main-wrapper {
+          padding: 5%;
+        }
+      }
+    </style>
+    <title>Why is Paintless Dent Repair so Popular | Dent Picks</title>
+  </head>
 
-.two-col div {
-  width: 50%;
-}
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li class="nav-item"><a href="https://dent-picks.com/">Main</a></li>
+        <li class="nav-item">
+          <a href="https://g.page/Dentpicks?share">Maps</a>
+        </li>
+        <li class="nav-item"><a href="./media.html">Media</a></li>
+        <li class="nav-item">
+          <a
+            href="https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx"
+            >Dent Picks</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-@media only screen and (max-width: 900px) {
-  body {
-    padding: 0;
-  }
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <section
+          style="
+            background-image: url(https://dent-picks.com/wp-content/uploads/2021/08/dent-picks-3.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: 0%;
+            min-height: 350px;
+            padding: 20px;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+          class="head"
+        >
+          <h1>Why is Paintless Dent Repair so Popular</h1>
+        </section>
 
-  .two-col {
-    flex-direction: column;
-  }
+        <section>
+          <p>
+            There are several advantages to having hail damage paintless dent
+            removal performed on your automobile. The first is a more
+            cost-effective alternative than traditional body shop repairs. In
+            most cases, hail damage paintless dent removal is less expensive and
+            takes far less time to complete than conventional body shop repairs.
+          </p>
+          <p>
+            If your automobile has been damaged by hail, there’s a chance that
+            it has suffered significant damage. Hail may cause considerable harm
+            to automobiles, including minor dents and broken windshields. If
+            your vehicle has been damaged by hail, you might be wondering if
+            there is a way to repair it yourself.
+          </p>
+          <p>
+            This technique, known as hail damage paintless dent removal, may
+            quickly repair more minor dents. Hail damage paintless dent removal
+            is a popular choice for individuals who don’t want to deal with the
+            trouble or expense of traditional bodywork.
+          </p>
+          <p>
+            Hail damage paintless dent repair is a technique that uses
+            specialized instruments to force and pull the dented metal back into
+            place. There’s no need to wait for the paint to dry, so this
+            procedure doesn’t require any painting or body filler. It takes less
+            than a few minutes to mend a dent in most cases.
+          </p>
+          <p>
+            Hail Damage Paintless Dent Removal is a well-known and successful
+            technique for repairing hail damage. Hail can cause significant
+            damage to automobiles, leaving dents and other scars. Many
+            individuals choose to have their vehicles blessed at a body shop
+            rather than doing the work themselves, but this may be costly.
+          </p>
+          <a
+            class="button-link"
+            href="https://dent-picks.com/why-is-paintless-dent-repair-so-popular/"
+            >Read Post</a
+          >
+        </section>
 
-  .two-col div {
-    width: 100%;
-  }
+        <section>
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/cYus53IVZz4"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-  .main-wrapper {
-    padding: 5%;
-  }
-}
-   </style>
-  <title>Why is Paintless Dent Repair so Popular | Dent Picks</title>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav class="nav-menu">
-    <ul>
-      <li class="nav-item"><a href="https://questcounselor.com/">Main</a></li>
-      <li class="nav-item"><a href="https://goo.gl/maps/quVy9YKwgQW4vCM88">Maps</a></li>
-      <li class="nav-item"><a href="./media.html">Media</a></li>
-      <li class="nav-item"><a
-          href="https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx">Dent Picks</a></li>      
-    </ul>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="container">
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <section style="background-image: url(https://dent-picks.com/wp-content/uploads/2021/08/dent-picks-3.jpg); background-size: cover; background-attachment: fixed; background-position: 0%; min-height: 350px; padding: 20px; box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.5); color: white; display:flex; flex-direction:column; justify-content: center" class="head">
-        <h1>Why is Paintless Dent Repair so Popular</h1>
-      </section>
-
-      <section>
-          <p>There are several advantages to having hail damage paintless dent removal performed on your automobile. The first is a more cost-effective alternative than traditional body shop repairs. In most cases, hail damage paintless dent removal is less expensive and takes far less time to complete than conventional body shop repairs.</p>
-          <p>If your automobile has been damaged by hail, there’s a chance that it has suffered significant damage. Hail may cause considerable harm to automobiles, including minor dents and broken windshields. If your vehicle has been damaged by hail, you might be wondering if there is a way to repair it yourself.</p>
-          <p>This technique, known as hail damage paintless dent removal, may quickly repair more minor dents. Hail damage paintless dent removal is a popular choice for individuals who don’t want to deal with the trouble or expense of traditional bodywork.</p>
-          <p>Hail damage paintless dent repair is a technique that uses specialized instruments to force and pull the dented metal back into place. There’s no need to wait for the paint to dry, so this procedure doesn’t require any painting or body filler. It takes less than a few minutes to mend a dent in most cases.</p>
-          <p>Hail Damage Paintless Dent Removal is a well-known and successful technique for repairing hail damage. Hail can cause significant damage to automobiles, leaving dents and other scars. Many individuals choose to have their vehicles blessed at a body shop rather than doing the work themselves, but this may be costly.</p>
-        <a class="button-link"
-            href="https://dent-picks.com/why-is-paintless-dent-repair-so-popular/">Read Post</a>
-      </section>
-
-      <section>
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/cYus53IVZz4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </section>
-
-      <section>
+        <section>
           <h2>What is paintless dent removal, and how does it work?</h2>
-          <p>Paintless dent repair is a technique of repairing minor dents and dings on a vehicle without standard body filler or paints. The expert will utilize unique instruments to eliminate the debt from the car’s surface. This is a relatively new technology, and many individuals are unfamiliar with it.</p>
-          <p>If you’ve been through a hail storm recently, you may have noticed dents on your vehicle. Many individuals believe that they must take their vehicles to a body shop to fix the dents. If the damage isn’t too bad, though, you might be able to fix it yourself using hail damage paintless dent repair.</p>
-          <p>Hail damage is a frequent issue for drivers in Plano, TX, and the surrounding areas. It can cause significant damage to automobiles and trucks, and it frequently necessitates costly repairs. Hail damage paintless dent removal is one approach to repair hail damage.</p>
-          <p>Hail Damage Paintless Dent Removal is an excellent method to repair auto hail damage without repainting the entire vehicle. Hail may seriously damage a vehicle’s paint, leaving dents and scratches. Traditional body shop repairs can be costly and time-consuming, but hail damage paintless dent removal can quickly and mend the harm.</p>
-        <a class="button-link"
-            href="https://dent-picks.com/">Visit Us</a>
-      </section>
+          <p>
+            Paintless dent repair is a technique of repairing minor dents and
+            dings on a vehicle without standard body filler or paints. The
+            expert will utilize unique instruments to eliminate the debt from
+            the car’s surface. This is a relatively new technology, and many
+            individuals are unfamiliar with it.
+          </p>
+          <p>
+            If you’ve been through a hail storm recently, you may have noticed
+            dents on your vehicle. Many individuals believe that they must take
+            their vehicles to a body shop to fix the dents. If the damage isn’t
+            too bad, though, you might be able to fix it yourself using hail
+            damage paintless dent repair.
+          </p>
+          <p>
+            Hail damage is a frequent issue for drivers in Plano, TX, and the
+            surrounding areas. It can cause significant damage to automobiles
+            and trucks, and it frequently necessitates costly repairs. Hail
+            damage paintless dent removal is one approach to repair hail damage.
+          </p>
+          <p>
+            Hail Damage Paintless Dent Removal is an excellent method to repair
+            auto hail damage without repainting the entire vehicle. Hail may
+            seriously damage a vehicle’s paint, leaving dents and scratches.
+            Traditional body shop repairs can be costly and time-consuming, but
+            hail damage paintless dent removal can quickly and mend the harm.
+          </p>
+          <a class="button-link" href="https://dent-picks.com/">Visit Us</a>
+        </section>
 
-      <section>
-          <div style="display:flex; justify-content:center">
-              <img src="https://lh3.googleusercontent.com/geougc/AF1QipNpQ4hhaVElwOzQ3RngPDuWflu0Jsren-Kv74MG=h400-no" alt="Hail Damage Paintless Dent Removal Plano, TX">
+        <section>
+          <div style="display: flex; justify-content: center">
+            <img
+              src="https://lh3.googleusercontent.com/geougc/AF1QipNpQ4hhaVElwOzQ3RngPDuWflu0Jsren-Kv74MG=h400-no"
+              alt="Hail Damage Paintless Dent Removal Plano, TX"
+            />
           </div>
-          <br>
-          <h2 style="text-align:center">The cost-effective alternative to traditional body shop repairs.</h2>
-          <hr>
-          <br>
-          <p>If you’ve ever been in a hailstorm, you know how dangerous they can be to your automobile. If your vehicle has been extensively damaged by hail, you may be wondering if it’s worth the effort and expense to have it fixed. You might also be concerned about the environmental impact of having your car taken to a body shop.</p>
-          <p>If you’ve been unlucky enough to have your vehicle damaged by hail, you’re probably looking for a way to repair it as soon and inexpensively as possible. You may not have considered that hail damage paintless dent repair is an option.</p>
-          <p>Hail is a frequently seen occurrence in Texas during the spring and summer. While it is aesthetically appealing, hail may wreak havoc on vehicles. If your automobile has been damaged by hail, you might be wondering if there’s any way to repair the damage without having to take it to a body shop.</p>
-          <p>If hailstones have damaged your vehicle, you may be considering repair alternatives. You might not have considered that hail damage paintless dent removal is a viable option.</p>
-          <p>When hail strikes your vehicle, you may be anxious about what to do. Hail damage can leave dents and scratches all over your automobile, and if left unrepaired, these flaws might reduce their value. But don’t worry; there’s a remedy! Paintless dent removal is a method of removing dents without harming the paint.</p>
-      </section>
+          <br />
+          <h2 style="text-align: center">
+            The cost-effective alternative to traditional body shop repairs.
+          </h2>
+          <hr />
+          <br />
+          <p>
+            If you’ve ever been in a hailstorm, you know how dangerous they can
+            be to your automobile. If your vehicle has been extensively damaged
+            by hail, you may be wondering if it’s worth the effort and expense
+            to have it fixed. You might also be concerned about the
+            environmental impact of having your car taken to a body shop.
+          </p>
+          <p>
+            If you’ve been unlucky enough to have your vehicle damaged by hail,
+            you’re probably looking for a way to repair it as soon and
+            inexpensively as possible. You may not have considered that hail
+            damage paintless dent repair is an option.
+          </p>
+          <p>
+            Hail is a frequently seen occurrence in Texas during the spring and
+            summer. While it is aesthetically appealing, hail may wreak havoc on
+            vehicles. If your automobile has been damaged by hail, you might be
+            wondering if there’s any way to repair the damage without having to
+            take it to a body shop.
+          </p>
+          <p>
+            If hailstones have damaged your vehicle, you may be considering
+            repair alternatives. You might not have considered that hail damage
+            paintless dent removal is a viable option.
+          </p>
+          <p>
+            When hail strikes your vehicle, you may be anxious about what to do.
+            Hail damage can leave dents and scratches all over your automobile,
+            and if left unrepaired, these flaws might reduce their value. But
+            don’t worry; there’s a remedy! Paintless dent removal is a method of
+            removing dents without harming the paint.
+          </p>
+        </section>
 
-      <section>
-          <h2>The cost-effective alternative to traditional body shop repairs.</h2>
-          <p>If your automobile has been damaged by hail, you may be wondering if it’s worth the time and money to have it repaired. Repairs from a body shop are generally more expensive than those performed by a garage because of the extra labor and materials needed.</p>
-          <p>If your automobile has hail damage, you may require a hail damage paintless dent repair service. Dent Picks is one of the top Hail Damage Paintless Dent Repair businesses in Texas. We provide timely, dependable service at a reasonable price.</p>
-          <p>If you’ve ever had your automobile damaged by hail, you know how difficult dents and dings can be to repair. Traditional body repair techniques may be expensive and time-consuming, but they are not the only option. Paintless Dent Removal is another alternative in the event of hail damage.</p>
-          <p>If your car has been struck by hail, you may wish to hire a Hail Damage Paintless Dent Removal company. Dent Picks is one of the most experienced and trustworthy Hail Damage Paintless Dent Removal businesses in Plano, TX. We can remove any dent or blemish from your car without causing additional damage, and our rates are pretty reasonable. We understand how distressing it is to have your automobile damaged by hail, and we’re here to assist you in getting it back in working order as soon as possible.</p>
-      </section>
+        <section>
+          <h2>
+            The cost-effective alternative to traditional body shop repairs.
+          </h2>
+          <p>
+            If your automobile has been damaged by hail, you may be wondering if
+            it’s worth the time and money to have it repaired. Repairs from a
+            body shop are generally more expensive than those performed by a
+            garage because of the extra labor and materials needed.
+          </p>
+          <p>
+            If your automobile has hail damage, you may require a hail damage
+            paintless dent repair service. Dent Picks is one of the top Hail
+            Damage Paintless Dent Repair businesses in Texas. We provide timely,
+            dependable service at a reasonable price.
+          </p>
+          <p>
+            If you’ve ever had your automobile damaged by hail, you know how
+            difficult dents and dings can be to repair. Traditional body repair
+            techniques may be expensive and time-consuming, but they are not the
+            only option. Paintless Dent Removal is another alternative in the
+            event of hail damage.
+          </p>
+          <p>
+            If your car has been struck by hail, you may wish to hire a Hail
+            Damage Paintless Dent Removal company. Dent Picks is one of the most
+            experienced and trustworthy Hail Damage Paintless Dent Removal
+            businesses in Plano, TX. We can remove any dent or blemish from your
+            car without causing additional damage, and our rates are pretty
+            reasonable. We understand how distressing it is to have your
+            automobile damaged by hail, and we’re here to assist you in getting
+            it back in working order as soon as possible.
+          </p>
+        </section>
 
-      <section>
-          <div style="display:flex; justify-content:center">
-              <img src="https://dent-picks.com/wp-content/uploads/2021/08/home-1920w-768x512.jpg" alt="Hail Damage Paintless Dent Removal Plano, TX">
+        <section>
+          <div style="display: flex; justify-content: center">
+            <img
+              src="https://dent-picks.com/wp-content/uploads/2021/08/home-1920w-768x512.jpg"
+              alt="Hail Damage Paintless Dent Removal Plano, TX"
+            />
           </div>
-          <br>
-          <h2 style="text-align:center;">Get your car back to normal with our experienced team.</h2>
-          <hr>
-          <br>
-          <p>We offer <a href="https://dent-picks.com/hail-repair-plano-tx/">hail damage paintless</a> dent removal in Plano, TX. We know the importance of getting your car back to normal as soon as possible so you can get on with your life. We offer various services to help get your car back to its original condition.</p>
-          <p>If you’ve been in a hailstorm recently, you may have noticed dents on your car. Hail can cause significant damage, leaving your vehicle with unsightly dents and sometimes even cracks in the windshield. If this is the case, don’t worry – there is a solution that doesn’t involve expensive and time-consuming body shop repairs.</p>
-          <p>Hail Damage Paintless Dent Removal is a process that can fix dents caused by hail without having to repaint your car or remove the bumper. The dent removal technician will use specialized tools to push and pull on the dented area until the dent pops out.</p>
-          <p>If you’ve been unlucky enough to have your car damaged by hail, then you’ll likely be looking for a way to fix it as quickly and cheaply as possible. One option you may not have considered is hail damage paintless dent removal. This is a relatively new technique that doesn’t require any painting or filling and can often be done in a single visit.</p>
-        <a class="button-link"
-            href="https://google.com/maps/?cid=11598163986173423007">Find Us Here!</a>
-      </section>
+          <br />
+          <h2 style="text-align: center">
+            Get your car back to normal with our experienced team.
+          </h2>
+          <hr />
+          <br />
+          <p>
+            We offer
+            <a href="https://dent-picks.com/hail-repair-plano-tx/"
+              >hail damage paintless</a
+            >
+            dent removal in Plano, TX. We know the importance of getting your
+            car back to normal as soon as possible so you can get on with your
+            life. We offer various services to help get your car back to its
+            original condition.
+          </p>
+          <p>
+            If you’ve been in a hailstorm recently, you may have noticed dents
+            on your car. Hail can cause significant damage, leaving your vehicle
+            with unsightly dents and sometimes even cracks in the windshield. If
+            this is the case, don’t worry – there is a solution that doesn’t
+            involve expensive and time-consuming body shop repairs.
+          </p>
+          <p>
+            Hail Damage Paintless Dent Removal is a process that can fix dents
+            caused by hail without having to repaint your car or remove the
+            bumper. The dent removal technician will use specialized tools to
+            push and pull on the dented area until the dent pops out.
+          </p>
+          <p>
+            If you’ve been unlucky enough to have your car damaged by hail, then
+            you’ll likely be looking for a way to fix it as quickly and cheaply
+            as possible. One option you may not have considered is hail damage
+            paintless dent removal. This is a relatively new technique that
+            doesn’t require any painting or filling and can often be done in a
+            single visit.
+          </p>
+          <a
+            class="button-link"
+            href="https://google.com/maps/?cid=11598163986173423007"
+            >Find Us Here!</a
+          >
+        </section>
 
-      <!-- content -->
+        <section>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d53525.360562320275!2d-96.7095109!3d33.0213027!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19b36d0ee165%3A0xa0f4f4b21a986d9f!2sDentpicks%20-%20Auto%20Hail%20Repair!5e0!3m2!1sen!2sph!4v1649647413562!5m2!1sen!2sph"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d53525.360562320275!2d-96.7095109!3d33.0213027!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19b36d0ee165%3A0xa0f4f4b21a986d9f!2sDentpicks%20-%20Auto%20Hail%20Repair!5e0!3m2!1sen!2sph!4v1649647413562!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.tripadvisor.com.ph/Attractions-g56463-Activities-Plano_Texas.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.tripadvisor.com.ph/Attractions-g56463-Activities-Plano_Texas.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.fox4news.com/tag/us/tx/collin-county/plano"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.fox4news.com/tag/us/tx/collin-county/plano" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://dent-picks.com/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://dent-picks.com/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./media.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./media.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="http://www.pearltrees.com/dentpicksahr"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="http://www.pearltrees.com/dentpicksahr" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./index.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./index.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <a
+            target="_bLank"
+            href="https://rank-fortress-digital-agency.github.io/dentpicks-03-22/"
+            >https://rank-fortress-digital-agency.github.io/dentpicks-03-22/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="http://dentpicks-03-22.s3-website-ap-southeast-1.amazonaws.com/"
+            >http://dentpicks-03-22.s3-website-ap-southeast-1.amazonaws.com/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="https://inspiring-zabaione-780a22.netlify.app/"
+            >https://inspiring-zabaione-780a22.netlify.app/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx"
+            >https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx</a
+          ><br />
+        </section>
+      </div>
 
-      <section>
-        <!-- WEBSITE EMBED -->
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://www.facebook.com/Dentpicks">Facebook</a></li>
+            <li>
+              <a href="https://google.com/maps/?cid=11598163986173423007"
+                >Google Page</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/channel/UCsJXtoMIEMm9ftzAx6pE82A/featured"
+                >Youtube</a
+              >
+            </li>
+            <li>
+              <a href="http://www.pearltrees.com/dentpicksahr">Pearltrees</a>
+            </li>
+            <li><a href="#">Calendar</a></li>
+            <li>
+              <a
+                href="https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx"
+                >Google Site</a
+              >
+            </li>
+            <li>
+              <a href="https://dentpicksahr.livejournal.com/302.html">About</a>
+            </li>
+          </ul>
+        </section>
 
-        <!-- MEDIA ROOM -->
-
-        <!-- BUSINESS SITE -->
-       
-        <!-- PEARL TREES -->
-        
-        <!-- CLOUD STACK SITE -->
-        
-      </section>
-
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://dent-picks.com/">Main</a></li>
+            <li><a href="https://g.page/Dentpicks?share">Maps</a></li>
+            <li><a href="./media.html">Media</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="side-bar">
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/Dentpicks">Facebook</a></li>
-          <li><a href="https://google.com/maps/?cid=11598163986173423007">Google Page</a></li>
-          <li><a href="https://www.youtube.com/channel/UCsJXtoMIEMm9ftzAx6pE82A/featured">Youtube</a></li>
-          <li><a href="http://www.pearltrees.com/dentpicksahr">Pearltrees</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="https://sites.google.com/view/haildamagepaintlessdentremoval/Hail-Damage-Paintless-Dent-Removal-Plano-Tx">Google Site</a></li>
-          <li><a href="https://dentpicksahr.livejournal.com/302.html">About</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://dent-picks.com/">Main</a></li>
-          <li><a href="https://g.page/Dentpicks?share">Maps</a></li>
-          <li><a href="./media.html">Media</a></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
